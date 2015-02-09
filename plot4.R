@@ -8,14 +8,14 @@ EletricData <- mutate(EletricData, Date_time = paste(Date, Time))
 EletricData$Date_time <- as.POSIXct(EletricData$Date_time, format = "%d/%m/%Y %H:%M:%S", tz = "UTC")
 
 
-par(mfrow = c(2,2), pin = c(3,3))
+par(mfrow = c(2,2), pin = c(2,2), cex = 0.61)
 with(EletricData, {
     plot(Date_time, Global_active_power, type = "l", xlab = "", ylab = "Global Active Power")
     plot(Date_time, Voltage, type = "l", xlab = "datetime", ylab = "Voltage")
     plot(Date_time, Sub_metering_1, type = "l", xlab = "", ylab = "Energy sub metering")
     lines(Date_time, Sub_metering_2, col ="red")
     lines(Date_time, Sub_metering_3, col= "blue")
-    legend("topright", y=1.5, lty = 1, col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+    legend("topright", lty = 1,x.intersp=0.1, col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
     plot(Date_time, Global_reactive_power, type = "l", xlab = "datetime", ylab = "Global_reactive_power")
 })
 
